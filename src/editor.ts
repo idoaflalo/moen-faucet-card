@@ -47,7 +47,7 @@ const options = {
   },
 };
 
-@customElement('boilerplate-card-editor')
+@customElement('moen-faucet-card-editor')
 export class BoilerplateCardEditor extends LitElement implements LovelaceCardEditor {
   @property({ attribute: false }) public hass?: HomeAssistant;
   @state() private _config?: BoilerplateCardConfig;

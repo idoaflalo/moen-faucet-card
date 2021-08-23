@@ -35,16 +35,16 @@ console.info(
 // This puts your card into the UI card picker dialog
 (window as any).customCards = (window as any).customCards || [];
 (window as any).customCards.push({
-  type: 'boilerplate-card',
+  type: 'moen-faucet-card',
   name: 'Boilerplate Card',
   description: 'A template custom card for you to create something awesome',
 });
 
 // TODO Name your custom element
-@customElement('boilerplate-card')
+@customElement('moen-faucet-card')
 export class BoilerplateCard extends LitElement {
   public static async getConfigElement(): Promise<LovelaceCardEditor> {
-    return document.createElement('boilerplate-card-editor');
+    return document.createElement('moen-faucet-card-editor');
   }
 
   public static getStubConfig(): object {

@@ -1,7 +1,7 @@
 {
-  "name": "moen-fuacet-card",
+  "name": "moen-faucet-card",
   "version": "1.0.0",
-  "description": "Lovelace moen-fuacet-card",
+  "description": "Lovelace moen-faucet-card",
   "keywords": [
     "home-assistant",
     "homeassistant",
@@ -10,8 +10,8 @@
     "lovelace",
     "custom-cards"
   ],
-  "module": "moen-fuacet-card.js",
-  "repository": "idoaflalo@github.com:custom_cards/moen-fuacet-card.git",
+  "module": "moen-faucet-card.js",
+  "repository": "idoaflalo@github.com:custom_cards/moen-faucet-card.git",
   "author": "Ido Aflalo <ido.aflalo@gmail.com>",
   "license": "MIT",
   "dependencies": {
