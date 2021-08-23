@@ -11,17 +11,14 @@ import { customElement, property, state } from "lit/decorators";
 import {
   HomeAssistant,
   hasConfigOrEntityChanged,
-  hasAction,
   ActionHandlerEvent,
   handleAction,
   LovelaceCardEditor,
-  getLovelace,
-} from 'custom-card-helpers'; // This is a community maintained npm module with common helper functions/types
+} from 'custom-card-helpers';
 
 import './editor';
 
 import type { MoenFaucetCardConfig } from './types';
-import { actionHandler } from './action-handler-directive';
 import { CARD_VERSION } from './const';
 import { localize } from './localize/localize';
 
@@ -36,13 +33,13 @@ console.info(
 (window as any).customCards = (window as any).customCards || [];
 (window as any).customCards.push({
   type: 'moen-faucet-card',
-  name: 'Boilerplate Card',
-  description: 'A template custom card for you to create something awesome',
+  name: 'Moen Faucet Card',
+  description: 'Moen Faucet card for choosing amounts for the faucet',
 });
 
 // TODO Name your custom element
 @customElement('moen-faucet-card')
-export class BoilerplateCard extends LitElement {
+export class MoenFaucetCard extends LitElement {
   public static async getConfigElement(): Promise<LovelaceCardEditor> {
     return document.createElement('moen-faucet-card-editor');
   }
@@ -51,30 +48,24 @@ export class BoilerplateCard extends LitElement {
     return {};
   }
 
-  // TODO Add any properities that should cause your element to re-render here
-  // https://lit-element.polymer-project.org/guide/properties
   @property({ attribute: false }) public hass!: HomeAssistant;
 
   @state() private config!: MoenFaucetCardConfig;
 
-  // https://lit-element.polymer-project.org/guide/properties#accessors-custom
   public setConfig(config: MoenFaucetCardConfig): void {
-    // TODO Check for required fields and that they are of the proper format
     if (!config) {
       throw new Error(localize('common.invalid_configuration'));
     }
 
-    if (config.test_gui) {
-      getLovelace().setEditMode(true);
+    if (!config.entity) {
+      throw new Error(localize('common.invalid_entity'));
     }
 
     this.config = {
-      name: 'Boilerplate',
       ...config,
     };
   }
 
-  // https://lit-element.polymer-project.org/guide/lifecycle#shouldupdate
   protected shouldUpdate(changedProps: PropertyValues): boolean {
     if (!this.config) {
       return false;
@@ -85,51 +76,13 @@ export class BoilerplateCard extends LitElement {
 
   // https://lit-element.polymer-project.org/guide/templates
   protected render(): TemplateResult | void {
-    // TODO Check for stateObj or other necessary things and render a warning if missing
-    if (this.config.show_warning) {
-      return this._showWarning(localize('common.show_warning'));
-    }
-
-    if (this.config.show_error) {
-      return this._showError(localize('common.show_error'));
-    }
+    const state = this.hass.states[this.config.entity];
+    console.log(state)
 
     return html`
-      <ha-card
-        .header=${this.config.name}
-        @action=${this._handleAction}
-        .actionHandler=${actionHandler({
-          hasHold: hasAction(this.config.hold_action),
-          hasDoubleClick: hasAction(this.config.double_tap_action),
-        })}
-        tabindex="0"
-        .label=${`Boilerplate: ${this.config.entity || 'No Entity Defined'}`}
-      ></ha-card>
-    `;
-  }
-
-  private _handleAction(ev: ActionHandlerEvent): void {
-    if (this.hass && this.config && ev.detail.action) {
-      handleAction(this, this.hass, this.config, ev.detail.action);
-    }
-  }
-
-  private _showWarning(warning: string): TemplateResult {
-    return html`
-      <hui-warning>${warning}</hui-warning>
-    `;
-  }
-
-  private _showError(error: string): TemplateResult {
-    const errorCard = document.createElement('hui-error-card');
-    errorCard.setConfig({
-      type: 'error',
-      error,
-      origConfig: this.config,
-    });
-
-    return html`
-      ${errorCard}
+    <ha-card>
+      <button>hello</button>
+    </ha-card>
     `;
   }
 
