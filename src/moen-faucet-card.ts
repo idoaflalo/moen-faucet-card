@@ -20,7 +20,7 @@ import {
 
 import './editor';
 
-import type { BoilerplateCardConfig } from './types';
+import type { MoenFaucetCardConfig } from './types';
 import { actionHandler } from './action-handler-directive';
 import { CARD_VERSION } from './const';
 import { localize } from './localize/localize';
@@ -55,10 +55,10 @@ export class BoilerplateCard extends LitElement {
   // https://lit-element.polymer-project.org/guide/properties
   @property({ attribute: false }) public hass!: HomeAssistant;
 
-  @state() private config!: BoilerplateCardConfig;
+  @state() private config!: MoenFaucetCardConfig;
 
   // https://lit-element.polymer-project.org/guide/properties#accessors-custom
-  public setConfig(config: BoilerplateCardConfig): void {
+  public setConfig(config: MoenFaucetCardConfig): void {
     // TODO Check for required fields and that they are of the proper format
     if (!config) {
       throw new Error(localize('common.invalid_configuration'));
