@@ -1,4 +1,4 @@
-# Boilerplate Card by [@iantrich](https://www.github.com/iantrich)
+# Moen Faucet Card by [@idoaflalo](https://www.github.com/idoaflalo)
 
 A community driven boilerplate of best practices for Home Assistant Lovelace custom cards
 

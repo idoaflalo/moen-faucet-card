@@ -1,7 +1,7 @@
 {
-  "name": "boilerplate-card",
-  "version": "1.4.0",
-  "description": "Lovelace boilerplate-card",
+  "name": "moen-fuacet-card",
+  "version": "1.0.0",
+  "description": "Lovelace moen-fuacet-card",
   "keywords": [
     "home-assistant",
     "homeassistant",
@@ -10,9 +10,9 @@
     "lovelace",
     "custom-cards"
   ],
-  "module": "boilerplate-card.js",
-  "repository": "git@github.com:custom_cards/boilerplate-card.git",
-  "author": "Ian Richardson <iantrich@gmail.com>",
+  "module": "moen-fuacet-card.js",
+  "repository": "idoaflalo@github.com:custom_cards/moen-fuacet-card.git",
+  "author": "Ido Aflalo <ido.aflalo@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "custom-card-helpers": "^1.7.2",
